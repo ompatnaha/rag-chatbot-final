@@ -179,33 +179,4 @@ Open [http://localhost:8501](http://localhost:8501) in your browser.
 
 ---
 
-## 📋 Resume Description
-
-> **AI Customer Support Chatbot with RAG** | Python, LangChain, LangGraph, FAISS, Streamlit
->
-> Built a production-grade Retrieval-Augmented Generation chatbot enabling organizations to deploy custom AI support agents over proprietary PDF documentation. Engineered a full-stack pipeline: PDF ingestion with LangChain's document loaders, recursive text chunking with semantic boundary awareness, HuggingFace sentence-transformer embeddings, and FAISS vector similarity search (MMR). Implemented a stateful LangGraph workflow graph for multi-turn conversations with persistent memory. Achieved accurate, source-attributed answers with <500ms retrieval latency. Deployed on Streamlit Cloud with Google Gemini and OpenAI dual-backend support.
-
----
-
-## 🎤 Interview Questions & Answers
-
-**Q: What is RAG and why is it better than fine-tuning for customer support?**
-> RAG retrieves relevant document chunks at inference time, keeping the knowledge base updatable without expensive retraining. Fine-tuning bakes knowledge into weights — hard to update and prone to hallucination on out-of-distribution queries.
-
-**Q: Why FAISS over a managed vector DB like Pinecone?**
-> FAISS is in-process, zero-latency, and free — ideal for prototypes and smaller corpora (<1M vectors). Pinecone/Weaviate add persistence, scalability, and metadata filtering for production at scale.
-
-**Q: What is MMR and why use it over pure similarity search?**
-> Maximal Marginal Relevance balances relevance with diversity — it penalizes chunks that are too similar to already-selected results, reducing redundancy and giving the LLM a richer context.
-
-**Q: How does LangGraph differ from a simple LangChain chain?**
-> LangGraph models the pipeline as a directed graph with explicit state transitions, enabling cycles, conditional routing, human-in-the-loop steps, and parallel branches — things a linear chain can't express.
-
-**Q: How do you handle conversation memory in RAG?**
-> Chat history (human/AI turn pairs) is passed as LangChain Message objects in the prompt's `MessagesPlaceholder`. The LLM sees prior context but retrieval is always on the latest question only.
-
-**Q: What chunking strategy did you choose and why?**
-> `RecursiveCharacterTextSplitter` with 1000-char chunks and 200-char overlap. The recursive strategy respects semantic boundaries (paragraphs → sentences → words) before hard-splitting. Overlap ensures context isn't lost at chunk boundaries.
-
-**Q: How would you scale this to 10M documents?**
-> Replace FAISS flat index with HNSW or IVF-PQ for approximate search. Move to a managed vector DB (Pinecone/Weaviate). Add a re-ranker (CrossEncoder) after retrieval. Cache frequent queries. Use async chunking/embedding pipelines.
+or DB (Pinecone/Weaviate). Add a re-ranker (CrossEncoder) after retrieval. Cache frequent queries. Use async chunking/embedding pipelines.
