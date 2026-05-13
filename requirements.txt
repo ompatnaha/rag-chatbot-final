@@ -1,0 +1,32 @@
+# ============================================================
+# AI Customer Support Chatbot with RAG – Requirements
+# ============================================================
+
+# ── Core Framework ───────────────────────────────────────────
+streamlit>=1.35.0
+
+# ── LangChain Ecosystem ──────────────────────────────────────
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+langchain-openai>=0.1.8
+langchain-huggingface>=0.0.3
+langchain-google-genai>=1.0.6
+langgraph>=0.1.5
+
+# ── LLM Providers ───────────────────────────────────────────
+openai>=1.30.0
+google-generativeai>=0.5.0
+
+# ── Embeddings & Vector Store ────────────────────────────────
+sentence-transformers>=2.7.0
+faiss-cpu>=1.8.0            # Use faiss-gpu for CUDA environments
+
+# ── Document Loaders ─────────────────────────────────────────
+pypdf>=4.2.0                # PDF loader backend for PyPDFLoader
+unstructured>=0.14.0        # Optional: richer PDF/docx extraction
+
+# ── Utilities ────────────────────────────────────────────────
+python-dotenv>=1.0.0        # Load .env files
+pydantic>=2.0.0             # Data validation (used by LangChain)
+tiktoken>=0.7.0             # Token counting for OpenAI models
